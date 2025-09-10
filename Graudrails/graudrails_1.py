@@ -9,7 +9,7 @@ from agents import (
     set_tracing_disabled
 )
 from main import config
-from pydantic import BaseModel
+from pydantic_class import BaseModel
 
 
 # Enable logs

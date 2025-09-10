@@ -11,7 +11,7 @@ from agents import (
     set_tracing_export_api_key
 )
 from main import config
-from pydantic import BaseModel
+from pydantic_class import BaseModel
 
 
 # ✅ Get API key from environment

@@ -2,7 +2,7 @@ from agents import Agent, Handoff, Runner ,enable_verbose_stdout_logging, handof
 set_tracing_disabled(disabled=True)
 enable_verbose_stdout_logging()
 from main import config
-from pydantic import BaseModel
+from pydantic_class import BaseModel
 
 Billing_Agent=Agent(
     name="Billing_Agent",

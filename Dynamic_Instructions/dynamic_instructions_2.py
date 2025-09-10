@@ -1,6 +1,6 @@
 from agents import Agent, AgentHooks, ModelResponse, Runner, TResponseInputItem, enable_verbose_stdout_logging, function_tool, set_tracing_disabled, RunContextWrapper, Tool
 from main import config
-from pydantic import BaseModel
+from pydantic_class import BaseModel
 
 set_tracing_disabled(disabled=True)
 # enable_verbose_stdout_logging()

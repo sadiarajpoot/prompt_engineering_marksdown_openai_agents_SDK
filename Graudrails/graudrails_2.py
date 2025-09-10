@@ -9,7 +9,7 @@ from agents import (
     RunContextWrapper
 )
 from main import config
-from pydantic import BaseModel
+from pydantic_class import BaseModel
 
 set_tracing_disabled(disabled=True)
 
