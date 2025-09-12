@@ -40,7 +40,7 @@ OpenAI Agents SDK 🤖
 🚀Model settings: Configuring model behavior and constraints. 🎚️
 🚀Runner method (run, run_sync, run_streamed) and use cases: Executing agent workflows. 🏃‍♂️
 🚀Tool calling: Integrating external functions with agents. 🛠️
-🚀output_type behavior and schema strictness: Defining and validating output structures. 📋
+🚀,output_type behavior and schema strictness: Defining and validating output structures. 📋
 
 Getting Started 🛠️
 
