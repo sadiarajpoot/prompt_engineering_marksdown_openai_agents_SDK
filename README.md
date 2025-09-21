@@ -1,87 +1,139 @@
-Agentic AI Learning Repository 🎉
+# 🤖 OpenAI Agents SDK - Study Notes
 
-Overview 🚀
+This repository contains my study notes and practice work on **OpenAI Agents SDK** concepts, configurations, and advanced features. The goal is to provide a structured overview of all key topics I have covered.
 
-This repository contains study materials and code examples for mastering the fundamentals of Agentic AI, including Prompt Engineering, Markdown formatting, Pydantic data validation, and the OpenAI Agents SDK. It serves as a comprehensive resource for learners and developers working on agent-based AI systems. 🌟
+---
 
-Topics Covered 📚
+## 📌 Topics Covered
 
-Prompt Engineering 💡
+### ⚙️ 1. Agents & Configuration
 
-Temperature, top_k, and top_p effects: Understanding how these parameters influence model output. 📊
-Safe system messages for sensitive data: Techniques to ensure data privacy in prompts. 🔒
-Chain of Thought prompting: Guiding models to reason step-by-step. 🤔
-Tree of Thoughts prompting: Enabling complex, multi-path reasoning. 🌳
+* Basics of creating an **Agent**
+* `Agent` configuration parameters
+* Defining **instructions** and **output types**
+* Using `Runner` to execute agents
 
+### 🧠 2. Contexts (Local & Global)
 
-Markdown 😄
+* **Local Context**: Data available only inside the agent, not passed to the LLM
+* **Global/LLM Context**: Data passed to the LLM for reasoning
+* `Context` object usage for managing state
 
-Clickable images with tooltips: Enhancing documentation with interactive elements. 📷
-Numbered and bulleted list formatting: Organizing content effectively. 📝
+### 🏗️ 3. Dataclasses vs Pydantic Classes
 
+* **Pydantic** for validation and schema generation
+* **Dataclasses** for lightweight structured data
+* When to prefer each in Agent SDK
 
-Pydantic 🛠️
+### 🔄 4. Dynamic Instructions
 
-@pydantic.dataclasses.dataclass vs BaseModel: Comparing data structure options. 🔍
-Type hints for validation and schema definition: Ensuring robust data validation. ✅
-Using dataclasses as output_type in agents: Integrating with agent outputs. 📤
+* Modifying agent instructions at runtime
+* Example: adjusting behavior based on user input or system state
 
+### 🛡️ 5. Guardrails
 
-OpenAI Agents SDK 🤖
+* **Input Guardrails**: validate or restrict incoming data
+* **Output Guardrails**: validate or enforce safe responses
+* Practical examples of applying guardrails in SDK
 
-🚀General concepts & defaults: Core principles of agent functionality. 🌐
-🚀Handoffs (concept, usage, parameters, callbacks): Transferring tasks between agents. 🔄
-🚀Tool calls & error handling during execution: Managing tool interactions and errors. 🛠️
-🚀Dynamic instructions: Adapting agent behavior contextually. 🎛️
-🚀Agent configuration: Setting up agents with instructions and tools. ⚙️
-🚀Guardrails (purpose, timing, tripwires): Ensuring safe and controlled execution. 🛡️
-🚀Tracing (traces vs spans, multi-run traces): Monitoring agent execution paths. 📈
-🚀Hooks (RunHooks, AgentHooks): Customizing agent lifecycle events. 🪝
-🚀Model settings: Configuring model behavior and constraints. 🎚️
-🚀Runner method (run, run_sync, run_streamed) and use cases: Executing agent workflows. 🏃‍♂️
-🚀Tool calling: Integrating external functions with agents. 🛠️
-🚀,output_type behavior and schema strictness: Defining and validating output structures. 📋
+### 🤝 6. Handoffs
 
-Getting Started 🛠️
+* **Basic Handoff**: Passing control between agents
+* **Advanced Handoff**: With conditions and callbacks
+* **Custom Handoff**: Define your own transfer logic
 
+### ⏱️ 7. Conversation Controls
 
+* **Max Turns**: Limiting the number of conversational steps
+* Exception handling with `MaxTurnsExceeded`
 
+### 🎲 8. Sampling & Generation Parameters
 
+* `temperature` → randomness control
+* `top_p` → nucleus sampling
+* `top_k` → restrict to top-k tokens
 
-Clone the repository: git clone https://github.com/yourusername/agentic-ai-learning.git 📥
+### 🛠️ 9. Tools & Tool Behavior
 
+* Tool definition and registration
+* **Tool Choice** (automatic vs forced)
+* Tool behavior configuration and error handling
 
+### ✨ 10. Markdown Usage
 
-Install dependencies: pip install pydantic openai 📦
+* Proper structuring with **lists, images, and code blocks**
+* Best practices for readable agent responses
 
+### 📑 11. Data Schema
 
+* Defining structured outputs using **Pydantic Models**
+* Enforcing type safety with schemas
+* Integration with `output_type`
 
-Explore the examples in the examples/ directory to see practical implementations. 🔍
+### 🪝 12. Hooks
 
-Examples 🌟
+* **RunHooks** and **AgentHooks**
+* Pre-run and post-run customizations
+* Logging, analytics, and debugging with hooks
 
+### ⚡ 13. Model Settings
 
+* Configuring model behavior per run or globally
+* Example: setting `max_tokens`, `temperature`
 
+### 🔍 14. Tracing & Output Types
 
+* **Tracing**: Understanding traces and spans
+* **Output Types**: Forcing structured responses from agents
+* Debugging agent execution with tracing
 
-Check examples/prompt_engineering.py for sample prompt strategies. 📝
+### 📝 15. Type Hinting
 
+* Using Python **type hints** for better schema validation
+* Integration with Pydantic and dataclasses
 
+---
 
-See examples/markdown_sample.md for formatted documentation examples. 📑
+## 🛠️ Example Snippets
 
+```python
+from agents import Agent, Runner
+from pydantic import BaseModel
 
+class Weather(BaseModel):
+    temperature: float
+    city: str
 
-Review examples/pydantic_models.py for data validation setups. 🛠️
+agent = Agent(
+    name="weather_agent",
+    instructions="Provide weather updates",
+    output_type=Weather
+)
 
+response = Runner.run(agent, input="Weather in Karachi")
+print(response)
+```
 
+---
 
-Explore examples/agent_sdk_demo.py for OpenAI Agents SDK usage. 🤖
+## 🚀 What I Learned
 
-Contributing 🌱
+* How **contexts** affect data flow (local vs global)
+* Writing **dynamic instructions** for flexible agents
+* Using **guardrails** for safe input/output
+* Implementing **handoffs** between multiple agents
+* Fine-tuning responses with **temperature, top\_p, top\_k**
+* Structuring responses with **schemas and type hints**
+* Observing agent activity via **tracing**
 
-Feel free to fork this repository, make improvements, and submit pull requests. Contributions to enhance examples or add new topics are welcome! 🙌
+---
 
-License 📜
+## 📖 Next Steps
 
-This project is licensed under the MIT License
+* Explore **Sessions** for long-running conversations
+* Learn about **multi-agent collaboration patterns**
+* Experiment with **custom tools and external APIs**
+
+---
+
+📌 *This README is part of my personal study notes while learning the OpenAI Agents SDK.*
